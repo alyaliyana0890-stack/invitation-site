@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitation</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      text-align: center;
+    }
+
+    .screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    h1 {
+      margin-bottom: 12px;
+      font-size: 2rem;
+    }
+
+    p {
+      margin-bottom: 20px;
+      max-width: 500px;
+      line-height: 1.5;
+    }
+
+    button, .location-btn {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 14px 24px;
+      font-size: 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 12px;
+    }
+
+    .invite-img {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      margin-top: 20px;
+    }
+
+    .content-wrap {
+      padding: 32px 20px 60px;
+      background: #f7f7f7;
+      color: #111;
+      min-height: 100vh;
+    }
+
+    .location-box {
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg" />
+    Your browser does not support audio.
+  </audio>
+
+  <section id="welcomeScreen" class="screen">
+    <h1>Anda Dijemput✨</h1>
+    <p>Ke Rumah Terbuka Mahat & Shuhaida.</p>
+    <button id="enterBtn">Klik di sini</button>
+  </section>
+
+  <section id="inviteScreen" class="hidden">
+    <div class="content-wrap">
+      <h1>Jemput datang Bersama seisi keluarga!</h1>
+      <img src="invite.png" alt="Invitation Card" class="invite-img" />
+
+      <div class="location-box">
+        <p></p>
+        <a
+          class="location-btn"
+          href="https://maps.app.goo.gl/9breqyeYNZGonUUaA"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Klik Disini untuk ke Lokasi Kediaman 📍
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const enterBtn = document.getElementById("enterBtn");
+    const bgMusic = document.getElementById("bgMusic");
+    const welcomeScreen = document.getElementById("welcomeScreen");
+    const inviteScreen = document.getElementById("inviteScreen");
+
+    enterBtn.addEventListener("click", async () => {
+      try {
+        await bgMusic.play();
+      } catch (err) {
+        console.log("Playback blocked:", err);
+      }
+
+      welcomeScreen.classList.add("hidden");
+      inviteScreen.classList.remove("hidden");
+    });
+  </script>
+</body>
+</html>
